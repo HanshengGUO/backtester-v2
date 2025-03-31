@@ -270,14 +270,14 @@ if __name__ == "__main__":
     for i in range(1, 100):
         # 测试获取当天的资金费率
         print("====== 测试获取当天的资金费率 ======")
-        rates = provider.get_daily_funding_rates("2025-03-15")
+        rates = provider.get_daily_funding_rates("2025-03-29")
         for ts, rate in rates.items():
             dt = datetime.fromtimestamp(ts)
             print(f"{dt}: {rate}")
         
         # 测试获取下一个资金费率
         print("\n====== 测试获取下一个资金费率 ======")
-        timestamp = int(datetime(2025, 3, 15, 10, 0, 0).timestamp())
+        timestamp = int(datetime(2025, 3, 29, 10, 0, 0).timestamp())
         next_ts, next_rate = provider.get_next_funding_rate(timestamp)
         if next_ts:
             dt = datetime.fromtimestamp(next_ts)
@@ -287,7 +287,7 @@ if __name__ == "__main__":
         
         # 测试获取上一个资金费率
         print("\n====== 测试获取上一个资金费率 ======")
-        timestamp = int(datetime(2025, 3, 15, 10, 0, 0).timestamp())
+        timestamp = int(datetime(2025, 3, 29, 10, 0, 0).timestamp())
         prev_ts, prev_rate = provider.get_prev_funding_rate(timestamp)
         if prev_ts:
             dt = datetime.fromtimestamp(prev_ts)

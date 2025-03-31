@@ -15,7 +15,7 @@ def main():
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler(f"backtest_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"),
+            logging.FileHandler(f"logs/backtest_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"),
             logging.StreamHandler()
         ]
     )
@@ -25,18 +25,18 @@ def main():
     instruments = {
         "swap": {
             "name": "binance_swap_btcusdt",
-            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data"), "binance/btcusdt_swap"),
+            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data/l2"), "okex/okex_swap_btcusdt"),
         },
         "spot": {
             "name": "binance_spot_btcusdt",
-            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data"), "binance/btcusdt_spot"),
+            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data/l2"), "okex/okex_spot_btc_usdt"),
         }
     }
     
     # 设置回测日期
     dates = [
-        "2025-02-01", "2025-02-02", "2025-02-03", "2025-02-04", "2025-02-05",
-        "2025-02-06", "2025-02-07", "2025-02-08", "2025-02-09", "2025-02-10"
+        "2025-03-19", "2025-03-20", "2025-03-21", "2025-03-22", "2025-03-23",
+        "2025-03-24", "2025-03-25", "2025-03-26", "2025-03-27", "2025-03-28"
     ]
     
     # 创建交易策略
@@ -46,7 +46,7 @@ def main():
         fee_rate=0.00015,  # Taker费率 0.015%
         funding_fee_enabled=True,
         inst_id="BTC-USDT-SWAP",
-        exchange="binance"
+        exchange="okex"
     )
     
     # 创建回测系统
@@ -99,18 +99,18 @@ def parameter_sweep():
     instruments = {
         "swap": {
             "name": "binance_swap_btcusdt",
-            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data"), "binance/btcusdt_swap"),
+            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data/l2"), "okex/okex_swap_btcusdt"),
         },
         "spot": {
             "name": "binance_spot_btcusdt",
-            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data"), "binance/btcusdt_spot"),
+            "data_path": os.path.join(os.environ.get("DATA_ROOT", "/data/l2"), "okex/okex_spot_btc_usdt"),
         }
     }
     
     # 设置回测日期
     dates = [
-        "2025-02-01", "2025-02-02", "2025-02-03", "2025-02-04", "2025-02-05",
-        "2025-02-06", "2025-02-07", "2025-02-08", "2025-02-09", "2025-02-10"
+        "2025-03-20", "2025-03-21", "2025-03-22", "2025-03-23", "2025-03-24",
+        "2025-03-25", "2025-03-26", "2025-03-27", "2025-03-28", "2025-03-29"
     ]
     
     # 参数组合
